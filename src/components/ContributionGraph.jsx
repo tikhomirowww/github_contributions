@@ -1,10 +1,12 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { getDates, getMonths } from "../utils/date";
 import Day from "./Day";
 
 const ContributionGraph = () => {
 	const dates = useMemo(getDates, []);
 	const months = getMonths();
+
+	const [selectedDay, setSelectedDay] = useState(null);
 
 	return (
 		<div>
@@ -23,7 +25,12 @@ const ContributionGraph = () => {
 						</p>
 					))}
 					{dates.map((day, i) => (
-						<Day key={i} day={day} />
+						<Day
+							selectedDay={selectedDay}
+							setSelectedDay={setSelectedDay}
+							key={i}
+							day={day}
+						/>
 					))}
 				</div>
 			</div>

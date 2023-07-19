@@ -46,6 +46,15 @@ body {
 .day {
 	width: 15px;
 	height: 15px;
+	cursor: pointer;
+}
+
+.day:hover {
+	border: 1px solid var(--hover-border-color);
+}
+
+.day.selected {
+	border: 1px solid var(--select-border-color);
 }
 
 .level-1 {
