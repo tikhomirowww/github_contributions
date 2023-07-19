@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { getDates, getMonths } from "../utils/date";
 import Day from "./Day";
+import Levels from "./Levels";
 
 const ContributionGraph = () => {
 	const dates = useMemo(getDates, []);
@@ -43,6 +44,7 @@ const ContributionGraph = () => {
 					))}
 				</div>
 			</div>
+			<Levels />
 		</div>
 	);
 };
