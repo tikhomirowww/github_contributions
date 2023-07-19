@@ -8,6 +8,10 @@ const ContributionGraph = () => {
 
 	const [selectedDay, setSelectedDay] = useState(null);
 
+	function showWeekDay(n) {
+		return n === 0 || n === 2 || n === 4;
+	}
+
 	return (
 		<div>
 			<div className="table">
@@ -18,12 +22,17 @@ const ContributionGraph = () => {
 						</p>
 					))}
 				</div>
+
 				<div className="table__body">
-					{dates.slice(0, 7).map((day, i) => (
-						<p className="capitalize" key={i}>
-							{day.format("dd")}
-						</p>
-					))}
+					{dates.slice(0, 7).map((day, i) =>
+						showWeekDay(i) ? (
+							<p className="week-day capitalize" key={i}>
+								{day.format("dd")}
+							</p>
+						) : (
+							<p key={i}></p>
+						)
+					)}
 					{dates.map((day, i) => (
 						<Day
 							selectedDay={selectedDay}
