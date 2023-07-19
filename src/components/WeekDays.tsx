@@ -1,5 +1,11 @@
-const WeekDays = ({ weekDays }) => {
-	function showWeekDay(n) {
+import { Dayjs } from "dayjs";
+
+interface IWeekDaysProps {
+	weekDays: Dayjs[];
+}
+
+const WeekDays = ({ weekDays }: IWeekDaysProps) => {
+	function showWeekDay(n: number): boolean {
 		return n === 0 || n === 2 || n === 4;
 	}
 	return (

@@ -1,7 +1,13 @@
 import RCTooltip from "rc-tooltip";
 import "rc-tooltip/assets/bootstrap.css";
+import { TooltipProps } from "rc-tooltip/lib/Tooltip";
 
-const Tooltip = ({ title, helperText, children, ...props }) => {
+interface ITooltipProps extends Omit<TooltipProps, "overlay"> {
+	title: string;
+	helperText?: string;
+}
+
+const Tooltip = ({ title, helperText, children, ...props }: ITooltipProps) => {
 	return (
 		<RCTooltip
 			placement="top"

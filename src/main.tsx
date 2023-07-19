@@ -3,4 +3,4 @@ import App from "./App.jsx";
 import "./styles/variables.css";
 import "./styles/index.css";
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+ReactDOM.createRoot(document.getElementById("root")!).render(<App />);

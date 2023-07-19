@@ -1,7 +1,7 @@
 import Tooltip from "./Tooltip";
 
 const Levels = () => {
-	function getTitle(level) {
+	function getTitle(level: number): string {
 		switch (level) {
 			case 1:
 				return "No contributions";
@@ -13,15 +13,17 @@ const Levels = () => {
 				return "20-29 contributions";
 			case 5:
 				return "30+ contributions";
+			default:
+				return "30+ contributions";
 		}
 	}
 	return (
 		<div className="levels">
 			<p className="text">Меньше</p>
 			<div className="days">
-				{[...new Array(5)].map((_, i) => (
-					<Tooltip key={i} title={getTitle(i + 1)} trigger="hover">
-						<div className={`day level-${i + 1}`}></div>
+				{[1, 2, 3, 4, 5].map((level) => (
+					<Tooltip key={level} title={getTitle(level + 1)} trigger="hover">
+						<div className={`day level-${level + 1}`}></div>
 					</Tooltip>
 				))}
 			</div>

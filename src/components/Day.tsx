@@ -1,7 +1,21 @@
 import classNames from "classnames";
 import Tooltip from "./Tooltip";
+import { Dayjs } from "dayjs";
+import { TContributions } from "./ContributionGraph";
 
-const Day = ({ day, selectedDay, setSelectedDay, contributions }) => {
+interface IDayProps {
+	day: Dayjs;
+	selectedDay: Dayjs | null;
+	setSelectedDay: (day: Dayjs | null) => void;
+	contributions: TContributions;
+}
+
+const Day = ({
+	day,
+	selectedDay,
+	setSelectedDay,
+	contributions,
+}: IDayProps) => {
 	const formattedDay = day.format("YYYY-MM-DD");
 
 	function isSelected() {

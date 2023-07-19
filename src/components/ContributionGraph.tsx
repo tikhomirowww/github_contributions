@@ -4,6 +4,9 @@ import Day from "./Day";
 import Levels from "./Levels";
 import WeekDays from "./WeekDays";
 import axios from "axios";
+import { Dayjs } from "dayjs";
+
+export type TContributions = Record<string, number>;
 
 const API = "https://dpg.gg/test/calendar.json";
 
@@ -11,12 +14,12 @@ const dates = getDates();
 const months = getMonths();
 
 const ContributionGraph = () => {
-	const [selectedDay, setSelectedDay] = useState(null);
-	const [contributions, setContributions] = useState({});
+	const [selectedDay, setSelectedDay] = useState<Dayjs | null>(null);
+	const [contributions, setContributions] = useState<TContributions>({});
 
 	async function getContributions() {
 		try {
-			const { data } = await axios.get(API);
+			const { data } = await axios.get<TContributions>(API);
 			setContributions(data);
 		} catch (e) {
 			console.log(e);
@@ -24,7 +27,7 @@ const ContributionGraph = () => {
 	}
 
 	useEffect(() => {
-		getContributions();
+		void getContributions();
 	}, []);
 
 	return (
