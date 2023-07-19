@@ -2,16 +2,13 @@ import { useMemo, useState } from "react";
 import { getDates, getMonths } from "../utils/date";
 import Day from "./Day";
 import Levels from "./Levels";
+import WeekDays from "./WeekDays";
 
 const ContributionGraph = () => {
 	const dates = useMemo(getDates, []);
 	const months = getMonths();
 
 	const [selectedDay, setSelectedDay] = useState(null);
-
-	function showWeekDay(n) {
-		return n === 0 || n === 2 || n === 4;
-	}
 
 	return (
 		<div>
@@ -25,15 +22,8 @@ const ContributionGraph = () => {
 				</div>
 
 				<div className="table__body">
-					{dates.slice(0, 7).map((day, i) =>
-						showWeekDay(i) ? (
-							<p className="week-day capitalize" key={i}>
-								{day.format("dd")}
-							</p>
-						) : (
-							<p key={i}></p>
-						)
-					)}
+					<WeekDays weekDays={dates.slice(0, 7)} />
+
 					{dates.map((day, i) => (
 						<Day
 							selectedDay={selectedDay}
