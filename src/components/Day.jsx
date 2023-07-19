@@ -1,6 +1,9 @@
 import classNames from "classnames";
+import Tooltip from "./Tooltip";
 
-const Day = ({ day, selectedDay, setSelectedDay }) => {
+const Day = ({ day, selectedDay, setSelectedDay, contributions }) => {
+	const formattedDay = day.format("YYYY-MM-DD");
+
 	function isSelected() {
 		if (!selectedDay) return false;
 		const format = "DD-MM-YYYY";
@@ -10,15 +13,30 @@ const Day = ({ day, selectedDay, setSelectedDay }) => {
 		return selected === current;
 	}
 
-	function handleClick() {
-		setSelectedDay(day);
+	function getBgColor() {
+		if (!(formattedDay in contributions)) return "level-1";
+
+		if (contributions[formattedDay] < 10) {
+			return "level-2";
+		} else if (contributions[formattedDay] < 20) {
+			return "level-3";
+		} else if (contributions[formattedDay] < 30) {
+			return "level-4";
+		} else {
+			return "level-5";
+		}
 	}
 
 	return (
-		<div
-			onClick={handleClick}
-			className={classNames("day level-3", { selected: isSelected() })}
-		></div>
+		<Tooltip
+			title={`${contributions[formattedDay] || "No"} contributions`}
+			helperText={day.format("dddd, MMMM DD, YYYY")}
+			afterVisibleChange={(visible) => setSelectedDay(visible ? day : null)}
+		>
+			<div
+				className={classNames("day", { selected: isSelected() }, getBgColor())}
+			></div>
+		</Tooltip>
 	);
 };
 

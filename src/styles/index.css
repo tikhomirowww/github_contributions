@@ -58,7 +58,7 @@ body {
 	border: 1px solid var(--hover-border-color);
 }
 
-.day.selected {
+.table__body .day.selected {
 	border: 1px solid var(--select-border-color);
 }
 
@@ -94,4 +94,34 @@ body {
 	display: flex;
 	align-items: center;
 	column-gap: 2px;
+}
+
+.rc-tooltip-arrow {
+	bottom: -4px !important;
+	border-top-color: var(--tooltip-background) !important;
+}
+
+.rc-tooltip {
+	opacity: 1 !important;
+}
+.rc-tooltip-inner {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	padding: 5px 10px !important;
+	border-radius: 3px !important;
+	background-color: var(--tooltip-background) !important;
+	transform: translateY(8px);
+	min-height: 32px !important;
+}
+
+.tooltip-text {
+	color: var(--tooltip-text);
+}
+
+.tooltip-helper-text {
+	color: var(--tooltip-helper-text);
+	text-transform: capitalize;
 }
