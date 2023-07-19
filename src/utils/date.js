@@ -15,3 +15,15 @@ export function getDates(date = dayjs()) {
 
 	return weekDates;
 }
+
+export function getMonths(month = dayjs()) {
+	const start = month.subtract(11, "month");
+	const months = [];
+
+	for (let i = 0; i < 12; i++) {
+		const currentMonth = start.add(i, "month");
+		months.push(currentMonth.format("MMM"));
+	}
+
+	return months;
+}
