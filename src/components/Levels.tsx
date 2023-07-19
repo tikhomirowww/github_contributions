@@ -22,8 +22,8 @@ const Levels = () => {
 			<p className="text">Меньше</p>
 			<div className="days">
 				{[1, 2, 3, 4, 5].map((level) => (
-					<Tooltip key={level} title={getTitle(level + 1)} trigger="hover">
-						<div className={`day level-${level + 1}`}></div>
+					<Tooltip key={level} title={getTitle(level)} trigger="hover">
+						<div className={`day level-${level}`}></div>
 					</Tooltip>
 				))}
 			</div>
